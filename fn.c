@@ -1,4 +1,5 @@
 #include "monty.h"
+int stack[LIMIT] = {0};
 /**
  * push - push on stack
  * @element: element to be pushed

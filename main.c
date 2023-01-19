@@ -1,5 +1,4 @@
 #include "monty.h"
-int stack[LIMIT] = {0};
 /**
  * main - main function
  *
@@ -40,6 +39,10 @@ int main(int argc, char *argv[])
 	while (fgets(line_buf, 1000, file_h))
 	{
 		token = strtok(line_buf, " \n");
+		if (token == NULL)
+		{
+			i = 2;
+		}
 		token2 = strtok(NULL, " \n"); 
 		while (funcs[i].op != NULL)
 		{
