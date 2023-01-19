@@ -30,7 +30,7 @@ void pall(__attribute__((unused))char *e, __attribute__((unused))int linecount, 
 	int i;
 	int v = *push_stack;
 
-	if (v > 0)
+	if (v >= 0)
 	{
 		for (i = v; i >=0; i--)
 		{
