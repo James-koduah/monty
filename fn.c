@@ -17,6 +17,7 @@ void push(char *element, int linecount, int *push_stack)
 	}
 	if (element == NULL || !b)
 	{
+		free(push_stack);
 		fprintf(stderr, "L%d: usage: push integer\n", linecount);
 		exit(EXIT_FAILURE);
 	}

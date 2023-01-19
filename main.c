@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
 	*push_stack = -1;
 	if (argc != 2)
 	{
+		free(push_stack);
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
@@ -31,6 +32,7 @@ int main(int argc, char *argv[])
 	file_h = fopen(argv[1], "r");
 	if (!file_h)
 	{
+		free(push_stack);
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
@@ -51,6 +53,7 @@ int main(int argc, char *argv[])
 		
 		if (match == 0)
 		{
+			free(push_stack);
 			fprintf(stderr, "L%d: unknown instruction %s\n", linecount, token);
 			exit(EXIT_FAILURE);
 		}
@@ -60,5 +63,6 @@ int main(int argc, char *argv[])
 		linecount++;
 	}
 	fclose(file_h);
+	free(push_stack);
 	return (0);
 }
