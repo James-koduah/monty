@@ -1,13 +1,5 @@
 #include "monty.h"
 int stack[LIMIT] = {0};
-void exit_str(char *mess, char *ar)
-{
-	if (ar == NULL)
-		ar = "";
-	fprintf(stderr, "%s%s\n", mess, ar);
-	exit(EXIT_FAILURE);
-}
-
 /**
  * main - main function
  *
@@ -29,13 +21,19 @@ int main(int argc, char *argv[])
 	int linecount = 1; 
 
 	*push_stack = -1;
-	if (argc < 2)
-		exit_str("USAGE: monty file", NULL);
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 
 	/* open the file */
 	file_h = fopen(argv[1], "r");
 	if (!file_h)
-		exit_str("Error: Can't open file ", argv[1]);
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
 
 	while (fgets(line_buf, 1000, file_h))
 	{

@@ -11,7 +11,10 @@ void push(char *element, int linecount, int *push_stack)
 	int b;
 	int v = *push_stack;
 
-	b = atoi(element);
+	if (element)
+	{
+		b = atoi(element);
+	}
 	if (element == NULL || !b)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", linecount);
