@@ -10,10 +10,8 @@
 
 #define LIMIT 100
 extern int stack[LIMIT];
-extern int push_stack;
-extern int linecount;
-void push(char *);
-void pall(char *);
+void push(char *, int, int*);
+void pall(char *, int, int*);
 
 
 
@@ -50,7 +48,7 @@ typedef struct instruction_s
 typedef struct op
 {
 	char *op;
-	void (*f)(char*);
+	void (*f)(char*, int, int*);
 } functions;
 
 

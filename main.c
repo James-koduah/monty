@@ -1,7 +1,5 @@
 #include "monty.h"
 int stack[LIMIT] = {0};
-int push_stack = -1;
-int linecount = 1; 
 void exit_str(char *mess, char *ar)
 {
 	if (ar == NULL)
@@ -27,8 +25,10 @@ int main(int argc, char *argv[])
 		{NULL, NULL}
 	};
 	char *token, *token2;
-	
+	int *push_stack = malloc(sizeof(int));
+	int linecount = 1; 
 
+	*push_stack = -1;
 	if (argc < 2)
 		exit_str("USAGE: monty file", NULL);
 
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 		{
 			if (strcmp(token, funcs[i].op) == 0)
 			{
-				funcs[i].f(token2);
+				funcs[i].f(token2, linecount, push_stack);
 				match = 1;
 			}
 			i++;
