@@ -1,7 +1,7 @@
 #include "monty.h"
 int stack[LIMIT] = {0};
 int push_stack = -1;
- 
+int linecount = 1; 
 void exit_str(char *mess, char *ar)
 {
 	if (ar == NULL)
@@ -20,13 +20,14 @@ int main(int argc, char *argv[])
 {
 	char line_buf[1000];
 	FILE *file_h;/*file handle*/
-	int i = 0, match = 0, linecount = 0;
+	int i = 0, match = 0;
 	functions funcs[] = {
 		{"push", push},
 		{"pall", pall},
 		{NULL, NULL}
 	};
 	char *token, *token2;
+	
 
 	if (argc < 2)
 		exit_str("USAGE: monty file", NULL);
@@ -49,7 +50,7 @@ int main(int argc, char *argv[])
 			}
 			i++;
 		}
-		linecount++;
+		
 		if (match == 0)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", linecount, token);
@@ -58,6 +59,7 @@ int main(int argc, char *argv[])
 
 		i = 0;
 		match = 0;
+		linecount++;
 	}
 	fclose(file_h);
 	return (0);

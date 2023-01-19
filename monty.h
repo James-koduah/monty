@@ -11,7 +11,7 @@
 #define LIMIT 100
 extern int stack[LIMIT];
 extern int push_stack;
-
+extern int linecount;
 void push(char *);
 void pall(char *);
 

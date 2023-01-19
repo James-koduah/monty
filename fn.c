@@ -2,9 +2,14 @@
 
 void push(char *element)
 {
-	int b = atoi(element);
-	if (b == 0)
-		return;
+	int b;
+	
+	if (element == NULL)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", linecount);
+		exit(EXIT_FAILURE);
+	}
+	b = atoi(element);
 	push_stack++;
 	stack[push_stack] = b;
 }
