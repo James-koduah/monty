@@ -4,12 +4,12 @@ void push(char *element)
 {
 	int b;
 	
-	if (element == NULL)
+	b = atoi(element);
+	if (element == NULL || !b)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", linecount);
 		exit(EXIT_FAILURE);
 	}
-	b = atoi(element);
 	push_stack++;
 	stack[push_stack] = b;
 }
