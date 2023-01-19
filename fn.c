@@ -31,7 +31,7 @@ void pall(__attribute__((unused))char *e, __attribute__((unused))int linecount, 
 	{
 		for (i = v; i >=0; i--)
 		{
-			printf("%d\n", stack[i]);
+			fprintf(stdout,"%d\n", stack[i]);
 		}
 	}
 }
