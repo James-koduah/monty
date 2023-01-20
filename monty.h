@@ -7,12 +7,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-
-#define LIMIT 100
-extern int stack[LIMIT];
-void push(char *, int, int*);
-void pall(char *, int, int*);
-
+extern char *ele;
 
 
 /**
@@ -45,11 +40,8 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-typedef struct op
-{
-	char *op;
-	void (*f)(char*, int, int*);
-} functions;
 
-
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void free_list(stack_t *head);
 #endif

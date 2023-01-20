@@ -1,71 +1,53 @@
 #include "monty.h"
-/**
- * main - main function
- *
- *
- * Return: something
- */
-int main(int argc, char *argv[])
+
+char *ele = "";
+int main(int ac, char *av[])
 {
 	char line_buf[1000];
-	FILE *file_h;/*file handle*/
-	int i = 0, match = 0;
-	functions funcs[] = {
+	FILE *fh;
+	char *token;
+	int i;
+	instruction_t ins[] = {
 		{"push", push},
 		{"pall", pall},
 		{NULL, NULL}
 	};
-	char *token, *token2;
-	int *push_stack = malloc(sizeof(int));
-	int linecount = 1; 
+	stack_t *stack = NULL;
+	unsigned int line_number = 1;
 
-	*push_stack = -1;
-	if (argc != 2)
+	if (ac != 2)
 	{
-		free(push_stack);
-		fprintf(stderr, "USAGE: monty file\n");
+		fprintf(stderr, "nn\n");
+		exit(EXIT_FAILURE);
+	}
+	
+	/* Open file */
+	fh = fopen(av[1], "r");
+	if (!fh)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
 
-	/* open the file */
-	file_h = fopen(argv[1], "r");
-	if (!file_h)
-	{
-		free(push_stack);
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
-
-	while (fgets(line_buf, 1000, file_h))
+	while (fgets(line_buf, 999, fh))
 	{
 		token = strtok(line_buf, " \n");
-		if (token == NULL)
-		{
-			i = 2;
-		}
-		token2 = strtok(NULL, " \n"); 
-		while (funcs[i].op != NULL)
-		{
-			if (strcmp(token, funcs[i].op) == 0)
+		if (token != NULL)
+		{	
+			for (i = 0; ins[i].opcode != NULL; i++)
 			{
-				funcs[i].f(token2, linecount, push_stack);
-				match = 1;
+				if (strcmp(token, ins[i].opcode) == 0)
+				{
+					ele = strtok(NULL, " \n");
+					ins[i].f(&stack, line_number);
+					line_number++;
+				}
 			}
-			i++;
 		}
-		
-		if (match == 0)
-		{
-			free(push_stack);
-			fprintf(stderr, "L%d: unknown instruction %s\n", linecount, token);
-			exit(EXIT_FAILURE);
-		}
-
-		i = 0;
-		match = 0;
-		linecount++;
 	}
-	fclose(file_h);
-	free(push_stack);
+	free_list(stack);
+	fclose(fh);
+	printf("file closed\n");
 	return (0);
+
 }
