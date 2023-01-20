@@ -10,7 +10,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	stack_t *h = *stack;
 	int c;
 	int d;
-	
+
 	if (h != NULL && h->next != NULL)
 	{
 		c = h->n;
