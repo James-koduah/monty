@@ -18,6 +18,7 @@ int main(int ac, char *av[])
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"swap", swap},
 		{NULL, NULL}
 	};
 	stack_t *stack = NULL;
