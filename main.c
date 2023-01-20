@@ -16,6 +16,7 @@ int main(int ac, char *av[])
 	instruction_t ins[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 	stack_t *stack = NULL;

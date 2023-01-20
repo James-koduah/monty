@@ -73,3 +73,22 @@ void free_list(stack_t *head)
 	}
 	free(head);
 }
+
+/**
+ * pint - print out top value of the list
+ * @stack: head of stack;
+ * @line_number: line number
+ * Return: void
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if (*stack)
+	{
+		fprintf(stdout, "%d\n", (*stack)->n);
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+}
