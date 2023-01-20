@@ -1,5 +1,11 @@
 #include "monty.h"
 
+/**
+ * push - push a new element onto the stack
+ * @stack: head of stack;
+ * @line_number: line number
+ * Return: void
+ */
 void push(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
 	stack_t *new;
@@ -18,6 +24,12 @@ void push(stack_t **stack, __attribute__((unused))unsigned int line_number)
 	*stack = new;
 }
 
+/**
+ * pall - print out all elements of the list
+ * @stack: head of stack;
+ * @line_number: line number
+ * Return: void
+ */
 void pall(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
 	stack_t *h = *stack;
@@ -29,7 +41,11 @@ void pall(stack_t **stack, __attribute__((unused))unsigned int line_number)
 		h = h->next;
 	}
 }
-
+/**
+ * free_list - free the list
+ * @head: head of the list
+ * Return: void
+ */
 void free_list(stack_t *head)
 {
 	stack_t *f;
