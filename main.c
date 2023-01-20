@@ -6,21 +6,20 @@ int main(int ac, char *av[])
 	char line_buf[1000];
 	FILE *fh;
 	char *token;
-	int i;
+	int i, g =0;
 	instruction_t ins[] = {
 		{"push", push},
 		{"pall", pall},
 		{NULL, NULL}
 	};
 	stack_t *stack = NULL;
-	unsigned int line_number = 1;
+	unsigned int line_number = 0;
 
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	
 	/* Open file */
 	fh = fopen(av[1], "r");
 	if (!fh)
@@ -28,9 +27,9 @@ int main(int ac, char *av[])
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-
 	while (fgets(line_buf, 999, fh))
 	{
+		line_number++;
 		token = strtok(line_buf, " \n");
 		if (token != NULL)
 		{	
@@ -40,8 +39,12 @@ int main(int ac, char *av[])
 				{
 					ele = strtok(NULL, " \n");
 					ins[i].f(&stack, line_number);
-					line_number++;
+					g = 1;
 				}
+			}
+			if (g == 0)
+			{
+				fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token); 
 			}
 		}
 	}
