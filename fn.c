@@ -14,8 +14,23 @@ void push(stack_t **stack, __attribute__((unused))unsigned int line_number)
 	if (ele != NULL)
 	{
 		n = atoi(ele);
+		if (n == 0)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+	}
+	if (ele == NULL)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
 	}
 	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	new->n = n;
 	if (*stack)
 		(*stack)->prev = new;

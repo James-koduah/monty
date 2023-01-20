@@ -1,12 +1,18 @@
 #include "monty.h"
 
 char *ele = "";
+/**
+ * main - main. function
+ * @ac: ac
+ * @av: av
+ * Return: int
+ */
 int main(int ac, char *av[])
 {
 	char line_buf[1000];
 	FILE *fh;
 	char *token;
-	int i, g =0;
+	int i, g = 0;
 	instruction_t ins[] = {
 		{"push", push},
 		{"pall", pall},
@@ -33,7 +39,7 @@ int main(int ac, char *av[])
 		line_number++;
 		token = strtok(line_buf, " \n");
 		if (token != NULL)
-		{	
+		{
 			for (i = 0; ins[i].opcode != NULL; i++)
 			{
 				if (strcmp(token, ins[i].opcode) == 0)
