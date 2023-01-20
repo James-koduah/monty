@@ -29,6 +29,7 @@ int main(int ac, char *av[])
 	}
 	while (fgets(line_buf, 999, fh))
 	{
+		g = 0;
 		line_number++;
 		token = strtok(line_buf, " \n");
 		if (token != NULL)
@@ -45,12 +46,12 @@ int main(int ac, char *av[])
 			if (g == 0)
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token); 
+				exit(EXIT_FAILURE);
 			}
 		}
 	}
 	free_list(stack);
 	fclose(fh);
-	printf("file closed\n");
 	return (0);
 
 }
