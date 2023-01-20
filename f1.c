@@ -92,3 +92,25 @@ void pint(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
+/**
+ * pop - print out top value of the list
+ * @stack: head of stack;
+ * @line_number: line number
+ * Return: void
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *h;
+
+	if (*stack)
+	{
+		h = *stack;
+		*stack = (*stack)->next;
+		free(h);
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+}
