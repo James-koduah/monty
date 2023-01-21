@@ -24,3 +24,25 @@ void swap(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
+/**
+ * add - add the top two elements
+ * @stack: head of list
+ * @line_number: line number
+ * Return: void
+ */
+void add(stack_t **stack, unsigned int line_number)
+{
+	stack_t *h = *stack;
+
+	if (h != NULL && h->next != NULL)
+	{
+		(h->next)->n += h->n;
+		pop(stack, line_number);
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+}
