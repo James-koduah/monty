@@ -14,7 +14,7 @@ void push(stack_t **stack, __attribute__((unused))unsigned int line_number)
 	if (ele != NULL)
 	{
 		n = atoi(ele);
-		if (n == 0)
+		if (n == 0 && ele != '0')
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
