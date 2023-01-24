@@ -34,6 +34,11 @@ void mod(stack_t **stack, unsigned int line_number)
 {
 	stack_t *h = *stack;
 
+	if (h != NULL && h->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 	if (h != NULL && h->next != NULL)
 	{
 		(h->next)->n %= h->n;
