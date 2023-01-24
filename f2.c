@@ -78,3 +78,29 @@ void sub(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
+/**
+ * sub - subtract the top two elements
+ * @stack: head of list
+ * @line_number: line number
+ * Return: void
+ */
+void divide(stack_t **stack, unsigned int line_number)
+{
+	stack_t *h = *stack;
+
+	if (h->n == 0)
+	{
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (h != NULL && h->next != NULL)
+	{
+		(h->next)->n /= h->n;
+		pop(stack, line_number);
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+}

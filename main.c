@@ -22,6 +22,7 @@ int main(int ac, char *av[])
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
+		{"div", divide},
 		{NULL, NULL}
 	};
 	stack_t *stack = NULL;
