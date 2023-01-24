@@ -52,6 +52,8 @@ int main(int ac, char *av[])
 				if (strcmp(token, ins[i].opcode) == 0)
 				{
 					ele = strtok(NULL, " \n");
+					if (ele == NULL)
+						continue;
 					ins[i].f(&stack, line_number);
 					g = 1;
 				}
