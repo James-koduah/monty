@@ -49,6 +49,8 @@ int main(int ac, char *av[])
 		token = strtok(line_buf, " \n");
 		if (token != NULL)
 		{
+			if (token[0] == '#')
+				continue;
 			for (i = 0; ins[i].opcode != NULL; i++)
 			{
 				if (strcmp(token, ins[i].opcode) == 0)
