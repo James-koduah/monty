@@ -57,3 +57,24 @@ void nop(stack_t **stack, unsigned int line_number)
 	if (stack && line_number)
 	{}
 }
+/**
+ * sub - subtract the top two elements
+ * @stack: head of list
+ * @line_number: line number
+ * Return: void
+ */
+void sub(stack_t **stack, unsigned int line_number)
+{
+	stack_t *h = *stack;
+	
+	if (h != NULL && h->next != NULL)
+	{
+		(h->next)->n -= h->n;
+		pop(stack, line_number);
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+}

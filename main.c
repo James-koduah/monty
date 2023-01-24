@@ -21,6 +21,7 @@ int main(int ac, char *av[])
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
+		{"sub", sub},
 		{NULL, NULL}
 	};
 	stack_t *stack = NULL;
