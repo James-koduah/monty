@@ -66,7 +66,7 @@ void nop(stack_t **stack, unsigned int line_number)
 void sub(stack_t **stack, unsigned int line_number)
 {
 	stack_t *h = *stack;
-	
+
 	if (h != NULL && h->next != NULL)
 	{
 		(h->next)->n -= h->n;
@@ -79,7 +79,7 @@ void sub(stack_t **stack, unsigned int line_number)
 	}
 }
 /**
- * sub - subtract the top two elements
+ * divide - subtract the top two elements
  * @stack: head of list
  * @line_number: line number
  * Return: void
