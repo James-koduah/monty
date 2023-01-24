@@ -23,6 +23,7 @@ int main(int ac, char *av[])
 		{"nop", nop},
 		{"sub", sub},
 		{"div", divide},
+		{"mul", mul},
 		{NULL, NULL}
 	};
 	stack_t *stack = NULL;
