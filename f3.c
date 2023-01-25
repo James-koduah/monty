@@ -51,7 +51,7 @@ void mod(stack_t **stack, unsigned int line_number)
 	}
 }
 /**
- * mod - subtract the top two elements
+ * pchar - subtract the top two elements
  * @stack: head of list
  * @line_number: line number
  * Return: void
@@ -59,7 +59,7 @@ void mod(stack_t **stack, unsigned int line_number)
 void pchar(stack_t **stack, unsigned int line_number)
 {
 	int i = (*stack)->n;
-	
+
 	if (i >= 0 && i < 128)
 	{
 		putchar(i);
@@ -70,4 +70,29 @@ void pchar(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+}
+
+/**
+ * pstr - subtract the top two elements
+ * @stack: head of list
+ * @line_number: line number
+ * Return: void
+ */
+void pstr(stack_t **stack, __attribute__((unused))unsigned int line_number)
+{
+	stack_t *h = *stack;
+	int n;
+
+	while (1)
+	{
+		if (h)
+			n = h->n;
+		else
+			break;
+		if (n == 0)
+			break;
+		putchar(n);
+		h = h->next;
+	}
+	putchar('\n');
 }

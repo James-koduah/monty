@@ -52,6 +52,7 @@ void implementation(FILE *fh)
 		{"mul", mul},
 		{"mod", mod},
 		{"pchar", pchar},
+		{"pstr", pstr},
 		{NULL, NULL}
 	};
 	stack_t *stack = NULL;
