@@ -51,6 +51,7 @@ void implementation(FILE *fh)
 		{"div", divide},
 		{"mul", mul},
 		{"mod", mod},
+		{"pchar", pchar},
 		{NULL, NULL}
 	};
 	stack_t *stack = NULL;

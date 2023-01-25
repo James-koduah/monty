@@ -50,3 +50,24 @@ void mod(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
+/**
+ * mod - subtract the top two elements
+ * @stack: head of list
+ * @line_number: line number
+ * Return: void
+ */
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	int i = (*stack)->n;
+	
+	if (i >= 0 && i < 128)
+	{
+		putchar(i);
+		putchar('\n');
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+}
