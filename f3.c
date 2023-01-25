@@ -89,9 +89,16 @@ void pstr(stack_t **stack, __attribute__((unused))unsigned int line_number)
 			n = h->n;
 		else
 			break;
+
+
 		if (n == 0)
 			break;
-		putchar(n);
+
+
+		if (n >= 0 && n < 128)
+			putchar(n);
+		else
+			break;
 		h = h->next;
 	}
 	putchar('\n');
